@@ -10,20 +10,31 @@
 <h:head>
 	<title>BootsFaces Basic Page</title>
 </h:head>
-<h:body style="padding: 60px;">
-	<b:navBar brand="Project name" brandHref="#" fixed="top" inverse="false">
-		<b:navbarLinks>
-			<b:navLink value="Home" href="#"></b:navLink>
-			<b:navLink value="About" href="#about"></b:navLink>
-			<b:navLink value="Contact" href="#contact"></b:navLink>
-		</b:navbarLinks>
-	</b:navBar>
-	<b:container>
-		<b:row>
-			<b:column>
-				<h1>Hello, world!</h1>
-			</b:column>
-		</b:row>
-	</b:container>
+<h:body>	
+	<b:form>
+		<b:container>
+			<b:row>
+				<b:column>
+					<h1>Rozdíl dvou datumů</h1>
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column col-md="4">
+					<b:dateTimePicker value="#{datebean.dateFrom}"
+						show-date="true"
+						show-time="false" show-icon="true" label="Začátek" required="true"
+						format="DD.MM.YYYY" ondtchange="ajax:datebean.dateFromChanged()"
+						process="@this" update="daysDiffItem" />
+					<b:dateTimePicker value="#{datebean.dateTo}"
+						show-date="true"
+						show-time="false" show-icon="true" label="Konec" required="true"
+						format="DD.MM.YYYY" ondtchange="ajax:datebean.dateToChanged()"
+						process="@this" update="daysDiffItem" />
+					<b:inputText id="daysDiffItem" value="#{datebean.daysDifference}"
+						disabled="true" label="Počet dní" />
+				</b:column>
+			</b:row>
+		</b:container>
+	</b:form>
 </h:body>
 </html>
